@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8ea">
+  <title>一年級，選社團囉！｜鶯歌國小</title>
+  <style>
+    :root {
+      --ink: #29304a;
+      --paper: #fffdfa;
+      --cream: #fff8ea;
+      --yellow: #ffd76a;
+      --pink: #ff8fab;
+      --blue: #6ecff6;
+      --green: #7ed7b5;
+      --purple: #a78bfa;
+      --shadow: 0 12px 30px rgba(51, 63, 94, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(255, 215, 106, .25) 0 90px, transparent 92px),
+        radial-gradient(circle at 92% 18%, rgba(110, 207, 246, .20) 0 120px, transparent 122px),
+        var(--cream);
+      font-family: "Microsoft JhengHei", "Noto Sans TC", system-ui, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 410px;
+      padding: 54px 24px 42px;
+      text-align: center;
+      background: linear-gradient(155deg, #fff0bd 0%, #ffe3ed 48%, #dff5ff 100%);
+      border-bottom: 6px solid rgba(255,255,255,.8);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 70px;
+      background: rgba(255,255,255,.75);
+      border-radius: 999px;
+      filter: blur(.2px);
+      animation: cloud-drift 9s ease-in-out infinite alternate;
+    }
+
+    .hero::before { left: -55px; top: 80px; }
+    .hero::after { right: -60px; top: 210px; animation-delay: -4s; }
+
+    .school-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 2px solid rgba(41,48,74,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 20px 0 10px;
+      font-size: clamp(2.35rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: .03em;
+      text-shadow: 0 4px 0 #fff;
+    }
+
+    .rainbow-word { color: #f65d83; }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto;
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      font-weight: 800;
+    }
+
+    .hero-art {
+      display: block;
+      width: min(420px, 92vw);
+      margin: 18px auto -42px;
+      overflow: visible;
+    }
+
+    .hero-art .star { animation: twinkle 1.8s ease-in-out infinite; transform-origin: center; }
+    .hero-art .star:nth-child(2) { animation-delay: -.6s; }
+    .hero-art .star:nth-child(3) { animation-delay: -1.2s; }
+    .hero-art .kid { animation: hello 2s ease-in-out infinite; transform-origin: 178px 116px; }
+    .hero-art .balloon { animation: balloon 2.8s ease-in-out infinite alternate; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 44px 4px 18px;
+    }
+
+    .intro h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 4vw, 2.3rem);
+    }
+
+    .intro strong { color: #ed577d; }
+
+    .motion-toggle {
+      flex: none;
+      min-height: 48px;
+      padding: 10px 17px;
+      border: 0;
+      border-radius: 16px;
+      color: var(--ink);
+      background: #fff;
+      box-shadow: var(--shadow);
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      padding: 8px 2px 25px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .filter {
+      flex: none;
+      min-height: 46px;
+      padding: 10px 17px;
+      border: 2px solid transparent;
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 5px 15px rgba(51,63,94,.08);
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .filter:hover { transform: translateY(-2px); }
+    .filter[aria-pressed="true"] { border-color: var(--ink); background: var(--yellow); }
+
+    .club-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      padding: 4px 0 56px;
+    }
+
+    .club-card {
+      --accent: #ff8fab;
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 3px solid rgba(41,48,74,.09);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      outline: none;
+      transition: transform .25s ease, box-shadow .25s ease;
+      animation: card-in .55s both;
+    }
+
+    .club-card:hover,
+    .club-card:focus-visible {
+      transform: translateY(-7px) rotate(-.4deg);
+      box-shadow: 0 18px 36px rgba(51,63,94,.18);
+    }
+
+    .club-card:focus-visible { border-color: var(--accent); }
+    .club-card.hidden { display: none; }
+    .club-card.pop { animation: card-pop .48s ease; }
+
+    .art-box {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      perspective: 1000px;
+      background: color-mix(in srgb, var(--accent) 18%, white);
+      border-bottom: 3px dashed color-mix(in srgb, var(--accent) 65%, white);
+      user-select: none;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .club-card.is-flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+      border-radius: 25px 25px 0 0;
+    }
+
+    .face-front {
+      background: #eee;
+    }
+
+    .face-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .club-card:hover .face-front img {
+      transform: scale(1.05);
+    }
+
+    .face-back {
+      transform: rotateY(180deg);
+      background: color-mix(in srgb, var(--accent) 18%, white);
+    }
+
+    .face-back::before {
+      content: "";
+      position: absolute;
+      inset: auto -8% -40% 35%;
+      height: 88%;
+      border-radius: 50%;
+      background: rgba(255,255,255,.55);
+    }
+
+    .club-art { position: relative; z-index: 1; display: block; width: 100%; height: 100%; }
+
+    .card-copy { padding: 18px 19px 20px; }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+
+    .day, .code {
+      display: inline-flex;
+      align-items: center;
+      min-height: 31px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: .86rem;
+      font-weight: 900;
+    }
+
+    .day { background: color-mix(in srgb, var(--accent) 22%, white); }
+    .code { color: #677089; background: #f1f3f7; }
+
+    .club-card h3 {
+      min-height: 2.5em;
+      margin: 0 0 8px;
+      font-size: clamp(1.22rem, 2.1vw, 1.55rem);
+      line-height: 1.25;
+    }
+
+    .club-card p {
+      margin: 0;
+      color: #555f77;
+      font-size: 1.04rem;
+      font-weight: 800;
+      line-height: 1.55;
+    }
+
+    .tap-hint {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 5;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(4px);
+      font-size: .76rem;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(41,48,74,.15);
+      border: 1px solid rgba(41,48,74,.08);
+      pointer-events: none;
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .parent-note {
+      margin: 0 0 50px;
+      border: 2px solid rgba(41,48,74,.1);
+      border-radius: 20px;
+      background: rgba(255,255,255,.78);
+    }
+
+    .parent-note summary {
+      padding: 16px 18px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .parent-note div { padding: 0 18px 18px; color: #586079; line-height: 1.7; }
+    .parent-note a { color: #315cbe; font-weight: 800; }
+
+    footer {
+      padding: 28px 20px 40px;
+      text-align: center;
+      color: #667087;
+      background: #fff;
+      font-weight: 700;
+    }
+
+    /* SVG 動畫 */
+    .spin { animation: spin 2.2s linear infinite; transform-box: fill-box; transform-origin: center; }
+    .spin-fast { animation: spin .55s linear infinite; transform-box: fill-box; transform-origin: center; }
+    .bounce { animation: bounce 1.35s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .bounce-late { animation: bounce 1.35s -.55s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .float { animation: float 2.1s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .float-late { animation: float 2.1s -.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .wiggle { animation: wiggle 1.1s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom center; }
+    .swing { animation: swing 1.15s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom left; }
+    .pulse { animation: pulse 1.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .roll { animation: roll-across 3.3s ease-in-out infinite; }
+    .fly { animation: fly-across 3s ease-in-out infinite; }
+    .draw-line { stroke-dasharray: 180; stroke-dashoffset: 180; animation: draw 2s ease-in-out infinite; }
+    .cup-one { animation: stack-one 1.8s ease-in-out infinite; }
+    .cup-two { animation: stack-two 1.8s ease-in-out infinite; }
+    .cup-three { animation: stack-three 1.8s ease-in-out infinite; }
+    .dance-a { animation: dance-a .85s ease-in-out infinite alternate; transform-origin: 135px 112px; }
+    .dance-b { animation: dance-b .85s ease-in-out infinite alternate; transform-origin: 167px 112px; }
+    .note-up { animation: note-up 2.2s ease-out infinite; }
+    .orbit { animation: orbit 2.4s linear infinite; transform-origin: 150px 92px; }
+    .drone { animation: drone 2.8s ease-in-out infinite; }
+    .bat { animation: bat 1.7s ease-in-out infinite; transform-origin: 90px 126px; }
+    .ball-fly { animation: ball-fly 1.7s ease-in-out infinite; }
+    .paddle { animation: paddle .75s ease-in-out infinite alternate; transform-origin: 98px 116px; }
+    .ping { animation: ping 1.5s linear infinite; }
+    .skate { animation: skate 2.8s ease-in-out infinite; }
+    .frisbee { animation: frisbee 2.4s ease-in-out infinite; }
+    .volley { animation: volley 1.8s ease-in-out infinite; }
+
+    body.motion-paused .club-art *,
+    body.motion-paused .hero * { animation-play-state: paused !important; }
+
+    @keyframes cloud-drift { to { transform: translateX(50px); } }
+    @keyframes twinkle { 0%,100% { transform: scale(.75) rotate(0); opacity: .45; } 50% { transform: scale(1.25) rotate(25deg); opacity: 1; } }
+    @keyframes hello { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    @keyframes balloon { to { transform: translateY(-14px) rotate(2deg); } }
+    @keyframes card-in { from { opacity: 0; transform: translateY(20px); } }
+    @keyframes card-pop { 50% { transform: translateY(-5px) scale(1.025); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes bounce { 0%,100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.04); } }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-12px) rotate(5deg); } }
+    @keyframes wiggle { 0%,100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+    @keyframes swing { 0%,100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
+    @keyframes pulse { 0%,100% { transform: scale(.9); opacity: .7; } 50% { transform: scale(1.12); opacity: 1; } }
+    @keyframes roll-across { 0%,100% { transform: translateX(-38px) rotate(-5deg); } 50% { transform: translateX(45px) rotate(4deg); } }
+    @keyframes fly-across { 0% { transform: translate(-55px, 25px) rotate(-10deg); } 50% { transform: translate(50px, -30px) rotate(10deg); } 100% { transform: translate(-55px, 25px) rotate(-10deg); } }
+    @keyframes draw { 0% { stroke-dashoffset: 180; } 55%,100% { stroke-dashoffset: 0; } }
+    @keyframes stack-one { 0%,20% { transform: translate(0,0); } 50%,90% { transform: translate(38px,-49px); } }
+    @keyframes stack-two { 0%,20% { transform: translate(0,0); } 50%,90% { transform: translate(-38px,-49px); } }
+    @keyframes stack-three { 0%,20% { transform: translate(0,0); } 50%,90% { transform: translate(0,-93px); } }
+    @keyframes dance-a { to { transform: rotate(7deg) translateY(-7px); } }
+    @keyframes dance-b { to { transform: rotate(-7deg) translateY(-4px); } }
+    @keyframes note-up { 0% { transform: translateY(18px); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(-44px); opacity: 0; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes drone { 0%,100% { transform: translate(0,5px); } 35% { transform: translate(25px,-16px) rotate(3deg); } 70% { transform: translate(-25px,-10px) rotate(-3deg); } }
+    @keyframes bat { 0%,45%,100% { transform: rotate(-22deg); } 60% { transform: rotate(38deg); } }
+    @keyframes ball-fly { 0%,48% { transform: translate(0,0); } 72%,100% { transform: translate(100px,-53px); } }
+    @keyframes paddle { to { transform: rotate(17deg); } }
+    @keyframes ping { 0%,100% { transform: translate(0,22px); } 25% { transform: translate(45px,-26px); } 50% { transform: translate(90px,22px); } 75% { transform: translate(45px,-12px); } }
+    @keyframes skate { 0%,100% { transform: translateX(-50px) rotate(-3deg); } 50% { transform: translateX(55px) rotate(3deg); } }
+    @keyframes frisbee { 0% { transform: translate(-55px,25px) rotate(0); } 50% { transform: translate(65px,-24px) rotate(170deg); } 100% { transform: translate(-55px,25px) rotate(360deg); } }
+    @keyframes volley { 0%,100% { transform: translate(0,35px); } 50% { transform: translate(90px,-47px); } }
+
+    @media (max-width: 900px) { .club-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 610px) {
+      .hero { min-height: 365px; padding-top: 34px; }
+      .intro { align-items: flex-start; padding-top: 32px; }
+      .intro h2 { max-width: 12em; }
+      .motion-toggle { padding: 9px 12px; }
+      .club-grid { grid-template-columns: 1fr; gap: 17px; }
+      .club-card h3 { min-height: auto; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="school-pill">🏫 鶯歌國小・115學年度上學期</div>
+    <h1><span class="rainbow-word">一年級</span>，選社團囉！</h1>
+    <p>點一張卡片，看我們會玩什麼 ✨</p>
+    <svg class="hero-art" viewBox="0 0 420 180" role="img" aria-label="小朋友開心探索各種社團">
+      <circle class="star" cx="62" cy="60" r="10" fill="#ffd84f"/>
+      <path class="star" d="M350 35l5 11 12 2-9 8 2 12-10-6-11 6 3-12-9-8 12-2z" fill="#ff7da1"/>
+      <path class="star" d="M99 15l4 8 9 2-7 6 2 9-8-5-8 5 2-9-7-6 9-2z" fill="#6ecff6"/>
+      <g class="balloon">
+        <ellipse cx="332" cy="71" rx="35" ry="42" fill="#a78bfa"/>
+        <path d="M332 113c-10 14 8 18 0 35" fill="none" stroke="#6c5da5" stroke-width="3"/>
+        <path d="M325 109h14l-7 10z" fill="#8f70ef"/>
+      </g>
+      <g class="kid">
+        <circle cx="188" cy="71" r="39" fill="#ffd0aa"/>
+        <path d="M151 68c2-39 73-54 78 2-17-14-42-18-78-2z" fill="#554354"/>
+        <circle cx="174" cy="78" r="4" fill="#29304a"/>
+        <circle cx="202" cy="78" r="4" fill="#29304a"/>
+        <path d="M176 92q12 12 24 0" fill="none" stroke="#e26f71" stroke-width="4" stroke-linecap="round"/>
+        <path d="M154 122q34-25 68 0l19 58h-104z" fill="#6ecff6"/>
+        <path d="M222 130q35-19 51-47" fill="none" stroke="#ffd0aa" stroke-width="16" stroke-linecap="round"/>
+        <path d="M273 83l-2-18M273 83l13-13M273 83l16 3" fill="none" stroke="#ffd0aa" stroke-width="7" stroke-linecap="round"/>
+      </g>
+      <path d="M20 165q78-32 152 0t145 0 103 0" fill="none" stroke="#7ed7b5" stroke-width="12" stroke-linecap="round"/>
+    </svg>
+  </header>
+
+  <main class="wrap">
+    <section class="intro" aria-labelledby="club-title">
+      <h2 id="club-title">一年級可以選 <strong>31 個社團</strong></h2>
+      <button class="motion-toggle" id="motionToggle" type="button" aria-pressed="false">⏸ 暫停動畫</button>
+    </section>
+
+    <nav class="filters" aria-label="依星期篩選社團">
+      <button class="filter" type="button" data-day="全部" aria-pressed="true">🌈 全部</button>
+      <button class="filter" type="button" data-day="週一" aria-pressed="false">週一</button>
+      <button class="filter" type="button" data-day="週二" aria-pressed="false">週二</button>
+      <button class="filter" type="button" data-day="週三" aria-pressed="false">週三</button>
+      <button class="filter" type="button" data-day="週四" aria-pressed="false">週四</button>
+      <button class="filter" type="button" data-day="週五" aria-pressed="false">週五</button>
+      <button class="filter" type="button" data-day="週三下午" aria-pressed="false">週三下午</button>
+    </nav>
+
+    <section class="club-grid" id="clubGrid" aria-live="polite"></section>
+
+    <details class="parent-note">
+      <summary>給家長看的小提醒</summary>
+      <div>
+        本頁依簡章「對象（年級）」欄位篩選：只要包含一年級就列入，共 31 個社團。實際開班、費用、材料、自備物品與最新名額，仍請以校方報名系統為準。<br>
+        <a href="doc/新北市鶯歌國民小學115學年度上學期課後社團簡章.pdf" target="_blank" rel="noopener">開啟學校原始社團簡章（PDF）</a>
+      </div>
+    </details>
+  </main>
+
+  <footer>先看看、再想想，選一個最想玩的社團吧！</footer>
+
+  <script>
+    const clubs = [
+      // 週一
+      { code:'A1', day:'週一', time:'16:10–17:40', name:'拉鈴社', intro:'轉動扯鈴，變出酷動作！', type:'diabolo', color:'#ff8fab', 
+        img:'images/diabolo.jpg' },
+      { code:'A2', day:'週一', time:'16:10–17:40', name:'趣味英語社', intro:'玩遊戲，開口說英語！', type:'english', color:'#6ecff6', 
+        img:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=600&q=80' },
+      { code:'A4', day:'週一', time:'16:10–17:40', name:'競技疊杯', intro:'快快把杯子疊高高！', type:'cups', color:'#7ed7b5', 
+        img:'images/cups.jpg' },
+      { code:'A6', day:'週一', time:'16:10–17:40', name:'熱愛樂樂棒球社', intro:'揮揮球棒，把球打出去！', type:'baseball', color:'#ffd166', 
+        img:'images/baseball.jpg' },
+      { code:'A7', day:'週一', time:'16:10–17:40', name:'神奇魔幻科學實驗與水陸動力車高手作社', intro:'做實驗，也做動力小車！', type:'sciencecar', color:'#65d6ad', 
+        img:'images/sciencecar.jpg' },
+      { code:'A8', day:'週一', time:'16:10–17:40', name:'低年級兒童創意美術', intro:'畫畫、剪貼，做美術！', type:'art', color:'#ff9f68', 
+        img:'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=600&q=80' },
+      { code:'A9', day:'週一', time:'16:10–17:40', name:'神奇魔術社', intro:'變出讓人驚喜的魔術！', type:'magic', color:'#a78bfa', 
+        img:'images/magic.jpg' },
+      { code:'A10', day:'週一', time:'16:10–17:40', name:'桌球社（週一班）', intro:'揮拍，接住小白球！', type:'pingpong', color:'#55c8e8', 
+        img:'images/pingpong.jpg' },
+
+      // 週二
+      { code:'B4', day:'週二', time:'16:10–17:40', name:'圍棋社', intro:'黑白棋子，動腦下棋！', type:'go', color:'#8e9aaf', 
+        img:'images/go.jpg' },
+      { code:'B5', day:'週二', time:'16:10–17:40', name:'直排輪社團', intro:'穿上直排輪，滑滑滑！', type:'skate', color:'#ff8fab', 
+        img:'images/skate.jpg' },
+      { code:'B6', day:'週二', time:'16:10–17:40', name:'動力科學創客營', intro:'動手做會動的科學玩具！', type:'maker', color:'#ffd166', 
+        img:'images/sciencecar.jpg' },
+      { code:'B7', day:'週二', time:'16:10–17:40', name:'韓國熱舞社', intro:'跟著音樂一起跳舞！', type:'dance', color:'#ef7fd4', 
+        img:'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80' },
+
+      // 週三
+      { code:'C1', day:'週三', time:'16:10–17:40', name:'積木冒險遊戲社', intro:'用積木蓋出冒險世界！', type:'blocks', color:'#ff9f68', 
+        img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=80' },
+      { code:'C2', day:'週三', time:'16:10–17:40', name:'桌遊推理寶可夢卡牌', intro:'玩桌遊，挑戰寶可夢卡牌！', type:'cards', color:'#ffd166', 
+        img:'images/pokemoncards.jpg' },
+      { code:'C3', day:'週三', time:'16:10–17:40', name:'蝶谷巴特拼豆創意手作', intro:'拼拼豆豆，做漂亮作品！', type:'craft', color:'#ff8fab', 
+        img:'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80' },
+      { code:'C4', day:'週三', time:'16:10–17:40', name:'小小醫師社', intro:'聽心跳，當小小醫師！', type:'doctor', color:'#6ecff6', 
+        img:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80' },
+      { code:'C5', day:'週三', time:'16:10–17:40', name:'STEAM科學家', intro:'做實驗，找出科學秘密！', type:'steam', color:'#7ed7b5', 
+        img:'images/sciencecar.jpg' },
+      { code:'C6', day:'週三', time:'16:10–17:40', name:'流行舞蹈表演社（進階）', intro:'練舞步，帥氣上台表演！', type:'dance', color:'#a78bfa', 
+        img:'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80' },
+      { code:'C7', day:'週三', time:'16:10–17:40', name:'小小魔術營之我是好主播社', intro:'變魔術，也練習當主播！', type:'host', color:'#ff9f68', 
+        img:'images/magic.jpg' },
+
+      // 週四
+      { code:'D1', day:'週四', time:'16:10–17:40', name:'創意奶油膠手作社', intro:'擠奶油膠，做可愛小物！', type:'cream', color:'#ff8fab', 
+        img:'images/cream.jpg' },
+      { code:'D2', day:'週四', time:'16:10–17:40', name:'科技無人機', intro:'寫程式，讓無人機飛起來！', type:'drone', color:'#6ecff6', 
+        img:'images/drone.jpg' },
+      { code:'D3', day:'週四', time:'16:10–17:40', name:'流星球與球類運動社', intro:'甩流星球，也玩好多球！', type:'sports', color:'#ffd166', 
+        img:'images/baseball.jpg' },
+      { code:'D4', day:'週四', time:'16:10–17:40', name:'頂尖飛盤社', intro:'把飛盤丟得又遠又準！', type:'frisbee', color:'#7ed7b5', 
+        img:'images/frisbee.jpg' },
+
+      // 週五
+      { code:'E1', day:'週五', time:'16:10–17:40', name:'動力機械社', intro:'裝齒輪，讓機器動起來！', type:'mechanic', color:'#6ecff6', 
+        img:'images/sciencecar.jpg' },
+      { code:'E2', day:'週五', time:'16:10–17:40', name:'桌球社（週五班）', intro:'揮拍，接住小白球！', type:'pingpong', color:'#55c8e8', 
+        img:'images/pingpong.jpg' },
+      { code:'E3', day:'週五', time:'16:10–17:40', name:'瘋狂積木', intro:'用積木蓋出神奇點子！', type:'crazyblocks', color:'#ff9f68', 
+        img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=600&q=80' },
+      { code:'E5', day:'週五', time:'16:10–17:40', name:'頂尖桌遊社', intro:'一起玩桌遊、動動腦！', type:'boardgame', color:'#a78bfa', 
+        img:'images/pokemoncards.jpg' },
+      { code:'E6', day:'週五', time:'16:10–17:40', name:'韓國熱舞社', intro:'跟著音樂一起跳舞！', type:'dance', color:'#ef7fd4', 
+        img:'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=600&q=80' },
+
+      // 週三下午
+      { code:'H1', day:'週三下午', time:'12:40–16:00', name:'可愛黏土卡通手作社', intro:'捏黏土，做卡通小角色！', type:'clay', color:'#ff8fab', 
+        img:'images/clay.jpg' },
+      { code:'H2', day:'週三下午', time:'13:30–15:00', name:'流行舞蹈表演社（基礎）', intro:'從簡單舞步開始跳！', type:'dance', color:'#a78bfa', 
+        img:'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80' },
+      { code:'H3', day:'週三下午', time:'13:30–15:00', name:'初階排球', intro:'托球、接球，快樂打排球！', type:'volleyball', color:'#ffd166', 
+        img:'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=600&q=80' }
+    ];
+
+    const base = (inner, title) => `
+      <svg class="club-art" viewBox="0 0 300 180" role="img" aria-label="${title}的活動動畫">
+        <title>${title}的活動動畫</title>
+        <path d="M20 151 Q80 136 142 151 T280 151" fill="none" stroke="rgba(41,48,74,.14)" stroke-width="5" stroke-linecap="round"/>
+        ${inner}
+      </svg>`;
+
+    function art(type, title) {
+      const ink = '#34405f', white = '#fffdfa';
+      const scenes = {
+        diabolo: `<path d="M70 42l38 82M230 42l-38 82" stroke="${ink}" stroke-width="7" stroke-linecap="round"/><path d="M105 116q45-28 90 0" fill="none" stroke="#7a6b8f" stroke-width="3"/><g class="spin"><path d="M132 100h36l-10 31h-16z" fill="#ff6d91"/><ellipse cx="150" cy="100" rx="21" ry="8" fill="#ff98b3"/></g>`,
+        english: `<g class="bounce"><rect x="66" y="72" width="62" height="62" rx="13" fill="#6ecff6"/><text x="97" y="115" text-anchor="middle" font-size="38" font-weight="900" fill="${white}">A</text></g><g class="bounce-late"><rect x="121" y="57" width="62" height="62" rx="13" fill="#ff8fab"/><text x="152" y="100" text-anchor="middle" font-size="38" font-weight="900" fill="${white}">B</text></g><g class="float"><rect x="176" y="76" width="62" height="62" rx="13" fill="#ffd166"/><text x="207" y="119" text-anchor="middle" font-size="38" font-weight="900" fill="${ink}">C</text></g>`,
+        cups: `<g fill="#52c8a0" stroke="${ink}" stroke-width="3"><path class="cup-one" d="M69 94h48l-7 41H76z"/><path class="cup-two" d="M127 94h48l-7 41h-34z"/><path class="cup-three" d="M185 94h48l-7 41h-34z"/></g>`,
+        baseball: `<g class="bat"><rect x="78" y="52" width="15" height="88" rx="8" fill="#c98b5d"/><rect x="75" y="42" width="21" height="67" rx="11" fill="#ffd59c"/></g><g class="ball-fly"><circle cx="118" cy="103" r="13" fill="white" stroke="#e65d65" stroke-width="3"/><path d="M108 98q9 5 18 0M110 109q8-5 16 0" fill="none" stroke="#e65d65" stroke-width="2"/></g><path d="M133 91q56-51 114-24" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="8 10"/>`,
+        sciencecar: `<g transform="translate(42 47)"><path d="M33 8v38L12 85q-7 14 10 14h63q17 0 10-14L74 46V8" fill="#f5fbff" stroke="${ink}" stroke-width="5"/><path d="M20 76h68l7 18H14z" fill="#63d5b2" opacity=".85"/><circle class="bounce" cx="44" cy="63" r="7" fill="#ffd166"/><circle class="bounce-late" cx="68" cy="78" r="5" fill="#ff8fab"/></g><g class="roll"><rect x="160" y="100" width="76" height="31" rx="8" fill="#ff8fab" stroke="${ink}" stroke-width="4"/><path d="M176 100l15-24h27l13 24" fill="#6ecff6" stroke="${ink}" stroke-width="4"/><circle class="spin" cx="180" cy="135" r="11" fill="${ink}"/><circle class="spin" cx="220" cy="135" r="11" fill="${ink}"/></g>`,
+        art: `<path d="M71 119q42-66 95-26t64 1" fill="none" stroke="#ff8fab" stroke-width="13" stroke-linecap="round"/><path class="draw-line" d="M68 120q42-66 95-26t64 1" fill="none" stroke="#6ecff6" stroke-width="6" stroke-linecap="round"/><g class="wiggle"><path d="M192 38l20 14-54 77-20-14z" fill="#ffd166" stroke="${ink}" stroke-width="4"/><path d="M138 115l20 14-24 12z" fill="#744b3b"/></g><circle cx="77" cy="72" r="27" fill="#fff" stroke="${ink}" stroke-width="4"/><circle cx="66" cy="65" r="6" fill="#ff8fab"/><circle cx="86" cy="62" r="6" fill="#ffd166"/><circle cx="79" cy="82" r="6" fill="#7ed7b5"/>`,
+        magic: `<path d="M91 115h118l-16 25h-86z" fill="${ink}"/><path d="M116 112l15-55h48l15 55z" fill="#4c4165"/><g class="float"><path d="M151 42l7 14 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#ffd166"/></g><g class="wiggle"><path d="M205 47l12-12 58 58-12 12z" fill="#f7f2ff" stroke="${ink}" stroke-width="4"/><path d="M208 39l13-13" stroke="#ff8fab" stroke-width="9" stroke-linecap="round"/></g><circle class="pulse" cx="242" cy="43" r="7" fill="#6ecff6"/>`,
+        pingpong: `<g class="paddle"><circle cx="97" cy="93" r="32" fill="#ef6262" stroke="${ink}" stroke-width="5"/><rect x="88" y="117" width="18" height="40" rx="8" fill="#b8794f" transform="rotate(-8 97 117)"/></g><path d="M144 137h100" stroke="${ink}" stroke-width="5"/><path d="M194 85v55" stroke="#fff" stroke-width="4" stroke-dasharray="5 5"/><g class="ping"><circle cx="142" cy="85" r="9" fill="#fff" stroke="${ink}" stroke-width="2"/></g>`,
+        go: `<rect x="62" y="30" width="176" height="118" rx="7" fill="#d9a85f" stroke="${ink}" stroke-width="5"/><g stroke="#77552e" stroke-width="2"><path d="M91 42v94M121 42v94M151 42v94M181 42v94M211 42v94M74 58h152M74 82h152M74 106h152M74 130h152"/></g><circle class="bounce" cx="121" cy="82" r="13" fill="#29304a"/><circle class="bounce-late" cx="181" cy="106" r="13" fill="#fff" stroke="#29304a" stroke-width="3"/><circle class="pulse" cx="151" cy="58" r="13" fill="#29304a"/>`,
+        skate: `<g class="skate"><path d="M83 57v55q0 17 20 17h100q18 0 18-15v-9h-69l-20-48z" fill="#ff8fab" stroke="${ink}" stroke-width="5"/><path d="M82 58h54l16 47h-69z" fill="#fff" stroke="${ink}" stroke-width="5"/><path d="M102 84h39" stroke="#6ecff6" stroke-width="7" stroke-linecap="round"/><g fill="#57627c"><circle class="spin" cx="111" cy="141" r="12"/><circle class="spin" cx="151" cy="141" r="12"/><circle class="spin" cx="191" cy="141" r="12"/></g></g>`,
+        maker: `<g transform="translate(76 47)"><g class="spin"><circle cx="43" cy="53" r="28" fill="#6ecff6" stroke="${ink}" stroke-width="7" stroke-dasharray="10 7"/><circle cx="43" cy="53" r="10" fill="#fff"/></g><g class="spin-fast"><circle cx="94" cy="86" r="22" fill="#ff8fab" stroke="${ink}" stroke-width="6" stroke-dasharray="8 6"/><circle cx="94" cy="86" r="7" fill="#fff"/></g></g><g class="pulse"><path d="M215 56a28 28 0 0 0-18 50v17h36v-17a28 28 0 0 0-18-50z" fill="#ffd166" stroke="${ink}" stroke-width="5"/><path d="M202 134h26" stroke="${ink}" stroke-width="7" stroke-linecap="round"/></g>`,
+        dance: `<g class="dance-a" stroke="${ink}" stroke-width="8" stroke-linecap="round"><circle cx="134" cy="53" r="18" fill="#ffd0aa" stroke="none"/><path d="M134 73v55M134 87l-31 24M134 87l27-30M134 126l-25 30M134 126l27 29"/></g><g class="dance-b" stroke="#7b5bd6" stroke-width="8" stroke-linecap="round"><circle cx="184" cy="60" r="16" fill="#ffd0aa" stroke="none"/><path d="M184 78v49M184 92l25 21M184 92l-20-28M184 125l-18 28M184 125l24 24"/></g><text class="note-up" x="79" y="106" font-size="36" font-weight="900" fill="#ff5e93">♫</text><text class="note-up" x="223" y="98" font-size="30" font-weight="900" fill="#6ecff6" style="animation-delay:-1s">♪</text>`,
+        blocks: `<g stroke="${ink}" stroke-width="4"><g class="bounce"><rect x="63" y="91" width="61" height="48" rx="5" fill="#ff8fab"/><circle cx="79" cy="90" r="7" fill="#ff8fab"/><circle cx="108" cy="90" r="7" fill="#ff8fab"/></g><g class="bounce-late"><rect x="121" y="82" width="61" height="57" rx="5" fill="#6ecff6"/><circle cx="137" cy="81" r="7" fill="#6ecff6"/><circle cx="166" cy="81" r="7" fill="#6ecff6"/></g><g class="float"><rect x="179" y="98" width="58" height="41" rx="5" fill="#ffd166"/><circle cx="194" cy="97" r="7" fill="#ffd166"/><circle cx="222" cy="97" r="7" fill="#ffd166"/></g></g>`,
+        cards: `<g transform="translate(150 90)"><g class="wiggle"><rect x="-80" y="-48" width="65" height="96" rx="9" fill="#fff" stroke="${ink}" stroke-width="5" transform="rotate(-14)"/><circle cx="-47" cy="0" r="16" fill="#ff8fab"/></g><g class="float"><rect x="-32" y="-53" width="65" height="96" rx="9" fill="#fff" stroke="${ink}" stroke-width="5"/><path d="M0-23l8 16 18 3-13 12 3 18L0 17l-16 9 3-18-13-12 18-3z" fill="#ffd166"/></g><g class="wiggle"><rect x="17" y="-48" width="65" height="96" rx="9" fill="#fff" stroke="${ink}" stroke-width="5" transform="rotate(14)"/><circle cx="49" cy="0" r="16" fill="#6ecff6"/></g></g>`,
+        craft: `<g transform="translate(65 34)"><rect x="0" y="0" width="170" height="112" rx="18" fill="#fff" stroke="${ink}" stroke-width="5"/><g class="pulse"><circle cx="39" cy="36" r="13" fill="#ff8fab"/><circle cx="67" cy="36" r="13" fill="#ffd166"/><circle cx="95" cy="36" r="13" fill="#6ecff6"/><circle cx="123" cy="36" r="13" fill="#7ed7b5"/></g><g class="bounce-late"><circle cx="53" cy="66" r="13" fill="#a78bfa"/><circle cx="81" cy="66" r="13" fill="#ff9f68"/><circle cx="109" cy="66" r="13" fill="#ff8fab"/></g><path class="draw-line" d="M32 91q35-23 66 0t44-5" fill="none" stroke="#7ed7b5" stroke-width="8" stroke-linecap="round"/></g>`,
+        doctor: `<g class="float"><circle cx="119" cy="60" r="24" fill="#6ecff6"/><path d="M119 45v30M104 60h30" stroke="#fff" stroke-width="9" stroke-linecap="round"/></g><path d="M90 88v22q0 31 29 31t29-31V85M148 111q0 25 29 25t29-22" fill="none" stroke="${ink}" stroke-width="7" stroke-linecap="round"/><circle class="pulse" cx="210" cy="105" r="17" fill="#ff8fab" stroke="${ink}" stroke-width="5"/><path class="draw-line" d="M58 120h26l8-18 14 34 15-27 10 11h38" fill="none" stroke="#ef5b77" stroke-width="5"/>`,
+        steam: `<g transform="translate(58 34)"><path d="M39 8v37L18 92q-7 13 10 13h66q17 0 10-13L83 45V8" fill="#fff" stroke="${ink}" stroke-width="5"/><path d="M26 78h69l10 24H16z" fill="#7ed7b5"/><circle class="bounce" cx="59" cy="61" r="7" fill="#ff8fab"/><circle class="bounce-late" cx="76" cy="82" r="5" fill="#ffd166"/></g><g class="spin" transform="translate(210 90)"><circle cx="0" cy="0" r="33" fill="#ffd166" stroke="${ink}" stroke-width="8" stroke-dasharray="12 8"/><circle cx="0" cy="0" r="11" fill="#fff"/></g>`,
+        host: `<g class="wiggle"><rect x="83" y="39" width="35" height="75" rx="18" fill="#ff8fab" stroke="${ink}" stroke-width="5"/><path d="M72 94q0 36 29 36t29-36M101 130v24M78 154h46" fill="none" stroke="${ink}" stroke-width="6" stroke-linecap="round"/></g><g class="float"><path d="M201 69l7 14 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#ffd166"/><path d="M180 38l11-11 57 57-11 11z" fill="#fff" stroke="${ink}" stroke-width="4"/></g><path class="pulse" d="M154 44q22-17 44 0" fill="none" stroke="#6ecff6" stroke-width="6" stroke-linecap="round"/>`,
+        cream: `<g class="wiggle"><path d="M77 38h70l-16 95H93z" fill="#ffd166" stroke="${ink}" stroke-width="5"/><path d="M94 133h36l-18 25z" fill="#b97850"/></g><path class="draw-line" d="M146 131q25-37 50 0t43 0" fill="none" stroke="#ff8fab" stroke-width="16" stroke-linecap="round"/><circle class="pulse" cx="186" cy="88" r="13" fill="#6ecff6"/><path class="float" d="M224 64l5 10 11 2-8 7 2 11-10-5-10 5 2-11-8-7 11-2z" fill="#ffd166"/>`,
+        drone: `<g class="drone"><path d="M105 83h90l20 32H85z" fill="#6ecff6" stroke="${ink}" stroke-width="5"/><rect x="134" y="106" width="32" height="25" rx="6" fill="#ff8fab" stroke="${ink}" stroke-width="4"/><path d="M104 88L71 58M196 88l33-30" stroke="${ink}" stroke-width="6"/><g class="spin-fast" stroke="${ink}" stroke-width="6" stroke-linecap="round"><path d="M45 58h52M71 43v30"/></g><g class="spin-fast" stroke="${ink}" stroke-width="6" stroke-linecap="round"><path d="M203 58h52M229 43v30"/></g></g>`,
+        sports: `<g class="orbit"><circle cx="150" cy="42" r="16" fill="#ff8fab" stroke="${ink}" stroke-width="3"/><circle cx="204" cy="114" r="16" fill="#6ecff6" stroke="${ink}" stroke-width="3"/><circle cx="96" cy="114" r="16" fill="#ffd166" stroke="${ink}" stroke-width="3"/></g><circle class="pulse" cx="150" cy="92" r="31" fill="#fff" stroke="${ink}" stroke-width="4"/><path d="M135 92q15-20 30 0M135 92q15 20 30 0" fill="none" stroke="#ff8fab" stroke-width="5"/>`,
+        frisbee: `<path d="M46 116q98-85 209-40" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="5" stroke-dasharray="9 11"/><g class="frisbee"><ellipse cx="106" cy="102" rx="46" ry="14" fill="#7ed7b5" stroke="${ink}" stroke-width="5"/><ellipse cx="106" cy="98" rx="27" ry="7" fill="#fff" opacity=".7"/></g>`,
+        mechanic: `<g class="spin" transform="translate(112 91)"><circle r="49" fill="#6ecff6" stroke="${ink}" stroke-width="12" stroke-dasharray="18 10"/><circle r="17" fill="#fff" stroke="${ink}" stroke-width="5"/></g><g class="spin-fast" transform="translate(205 112)"><circle r="32" fill="#ffd166" stroke="${ink}" stroke-width="9" stroke-dasharray="13 8"/><circle r="10" fill="#fff"/></g>`,
+        crazyblocks: `<g stroke="${ink}" stroke-width="4"><g class="bounce"><rect x="68" y="104" width="54" height="40" rx="5" fill="#ff8fab"/><circle cx="82" cy="102" r="7" fill="#ff8fab"/><circle cx="108" cy="102" r="7" fill="#ff8fab"/></g><g class="float"><rect x="123" y="77" width="54" height="67" rx="5" fill="#6ecff6"/><circle cx="137" cy="76" r="7" fill="#6ecff6"/><circle cx="163" cy="76" r="7" fill="#6ecff6"/></g><g class="bounce-late"><rect x="178" y="94" width="54" height="50" rx="5" fill="#ffd166"/><circle cx="192" cy="93" r="7" fill="#ffd166"/><circle cx="218" cy="93" r="7" fill="#ffd166"/></g></g><path class="pulse" d="M150 31l7 14 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="#ff8fab"/>`,
+        boardgame: `<g class="wiggle"><rect x="67" y="63" width="73" height="73" rx="14" fill="#fff" stroke="${ink}" stroke-width="5"/><circle cx="88" cy="84" r="7" fill="#a78bfa"/><circle cx="118" cy="84" r="7" fill="#a78bfa"/><circle cx="88" cy="114" r="7" fill="#a78bfa"/><circle cx="118" cy="114" r="7" fill="#a78bfa"/></g><g class="bounce-late"><circle cx="201" cy="68" r="20" fill="#ff8fab" stroke="${ink}" stroke-width="4"/><path d="M184 89h34l17 48h-68z" fill="#6ecff6" stroke="${ink}" stroke-width="4"/></g><path d="M154 54q42-30 83 2" fill="none" stroke="#ffd166" stroke-width="7" stroke-linecap="round"/>`,
+        clay: `<g class="pulse"><path d="M87 119q-16-38 12-67 24-25 52-2 29-27 57 1 27 27 5 68z" fill="#ff8fab" stroke="${ink}" stroke-width="5"/><circle cx="127" cy="88" r="6" fill="${ink}"/><circle cx="176" cy="88" r="6" fill="${ink}"/><path d="M132 106q19 14 38 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></g><circle class="float" cx="77" cy="56" r="13" fill="#ffd166"/><circle class="float-late" cx="223" cy="69" r="11" fill="#6ecff6"/>`,
+        volleyball: `<path d="M145 49v101M145 76h110" stroke="${ink}" stroke-width="5"/><path d="M145 76h110v65H145" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="8 7"/><g class="volley"><circle cx="65" cy="91" r="25" fill="#ffd166" stroke="${ink}" stroke-width="4"/><path d="M42 85q23 0 41 18M61 67q9 21-3 45M85 84q-19 6-31 28" fill="none" stroke="#fff" stroke-width="4"/></g><path d="M78 105q45-66 103-45" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="4" stroke-dasharray="8 9"/>`
+      };
+      return base(scenes[type] || scenes.blocks, title);
+    }
+
+    const grid = document.querySelector('#clubGrid');
+    grid.innerHTML = clubs.map((club, index) => `
+      <article class="club-card" data-day="${club.day}" tabindex="0" style="--accent:${club.color}; animation-delay:${Math.min(index * 35, 350)}ms">
+        <span class="tap-hint">點我看動畫 🎬</span>
+        <div class="art-box">
+          <div class="flip-inner">
+            <div class="face face-front">
+              <img src="${club.img}" alt="${club.name}活動照片" loading="lazy" onerror="if(this.src!=='${club.fallback||club.img}'){this.src='${club.fallback||club.img}'}">
+            </div>
+            <div class="face face-back">
+              ${art(club.type, club.name)}
+            </div>
+          </div>
+        </div>
+        <div class="card-copy">
+          <div class="meta"><span class="day">${club.day} ${club.time}</span><span class="code">${club.code}</span></div>
+          <h3>${club.name}</h3>
+          <p>${club.intro}</p>
+        </div>
+      </article>`).join('');
+
+    function toggleFlip(card) {
+      const isFlipped = card.classList.toggle('is-flipped');
+      const hint = card.querySelector('.tap-hint');
+      if (hint) {
+        hint.textContent = isFlipped ? '點我看照片 📷' : '點我看動畫 🎬';
+      }
+    }
+
+    grid.addEventListener('click', event => {
+      const card = event.target.closest('.club-card');
+      if (card) toggleFlip(card);
+    });
+
+    grid.addEventListener('keydown', event => {
+      if ((event.key === 'Enter' || event.key === ' ') && event.target.classList.contains('club-card')) {
+        event.preventDefault();
+        toggleFlip(event.target);
+      }
+    });
+
+    document.querySelector('.filters').addEventListener('click', event => {
+      const button = event.target.closest('.filter');
+      if (!button) return;
+      document.querySelectorAll('.filter').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      const selected = button.dataset.day;
+      document.querySelectorAll('.club-card').forEach(card => {
+        card.classList.toggle('hidden', selected !== '全部' && card.dataset.day !== selected);
+      });
+    });
+
+    document.querySelector('#motionToggle').addEventListener('click', event => {
+      const paused = document.body.classList.toggle('motion-paused');
+      event.currentTarget.setAttribute('aria-pressed', String(paused));
+      event.currentTarget.textContent = paused ? '▶ 播放動畫' : '⏸ 暫停動畫';
+    });
+  </script>
+</body>
+</html>
