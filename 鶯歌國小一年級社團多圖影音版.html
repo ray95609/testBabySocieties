@@ -409,6 +409,13 @@
       gap: 10px;
     }
 
+    .card-facts {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     .day-pill {
       display: inline-flex;
       align-items: center;
@@ -419,6 +426,18 @@
       font-size: 1.05rem;
       font-weight: 900;
       color: #22293f;
+    }
+
+    .grade-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 13px;
+      border: 2px solid #22293f;
+      border-radius: 999px;
+      background: #e8fff3;
+      color: #164e3b;
+      font-size: .92rem;
+      font-weight: 900;
     }
 
     .speech-btn {
@@ -1072,6 +1091,44 @@
           <g class="wiggle"><path d="M215 50l14-14 62 62-14 14z" fill="#fff" stroke="#22293f" stroke-width="4"/><path d="M218 42l14-14" stroke="#ff6b8b" stroke-width="10" stroke-linecap="round"/></g>
           <text x="160" y="180" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">🎩 神奇魔術驚喜連連！</text>
         </svg>`,
+      broadcaster: `
+        <svg class="club-art" viewBox="0 0 320 200">
+          <rect x="48" y="34" width="224" height="105" rx="18" fill="#dff5ff" stroke="#22293f" stroke-width="5"/>
+          <rect x="62" y="48" width="82" height="52" rx="8" fill="#ff6b8b"/>
+          <text x="103" y="81" font-size="17" font-weight="900" fill="#fff" text-anchor="middle">NEWS</text>
+          <g class="bounce"><circle cx="205" cy="69" r="23" fill="#ffd0aa" stroke="#22293f" stroke-width="4"/><path d="M174 127q31-42 62 0" fill="#4fc3f7" stroke="#22293f" stroke-width="4"/></g>
+          <g class="wiggle"><rect x="153" y="90" width="13" height="47" rx="7" fill="#5d6d7e" stroke="#22293f" stroke-width="3" transform="rotate(-20 160 114)"/><circle cx="151" cy="88" r="11" fill="#22293f"/></g>
+          <path d="M45 137h230v26H45z" fill="#f4b860" stroke="#22293f" stroke-width="5"/>
+          <text x="160" y="190" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">🎙️ 勇敢開口成為小主播！</text>
+        </svg>`,
+      science: `
+        <svg class="club-art" viewBox="0 0 320 200">
+          <g class="bounce"><path d="M118 42v48l-38 65h160l-38-65V42" fill="#dff5ff" stroke="#22293f" stroke-width="5"/><path d="M100 122h120l20 33H80z" fill="#9d7bf5" opacity=".8"/><circle cx="130" cy="128" r="10" fill="#ffd32a"/><circle cx="176" cy="139" r="13" fill="#ff6b8b"/><circle cx="198" cy="116" r="8" fill="#4fc3f7"/></g>
+          <g class="float"><text x="58" y="82" font-size="34">✨</text><text x="235" y="92" font-size="30">🔍</text></g>
+          <text x="160" y="186" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">🧪 動手實驗發現科學！</text>
+        </svg>`,
+      balls: `
+        <svg class="club-art" viewBox="0 0 320 200">
+          <path class="wiggle" d="M86 48q80 8 147 68" fill="none" stroke="#ff6b8b" stroke-width="7" stroke-linecap="round"/>
+          <g class="bounce"><circle cx="80" cy="48" r="24" fill="#ffd32a" stroke="#22293f" stroke-width="4"/><path d="M65 38q15 20 31 5M67 60q16-10 29 2" fill="none" stroke="#fff" stroke-width="4"/></g>
+          <circle cx="222" cy="72" r="29" fill="#ff9f43" stroke="#22293f" stroke-width="4"/><path d="M196 72h52M222 44q-16 28 0 56M222 44q16 28 0 56" fill="none" stroke="#22293f" stroke-width="3"/>
+          <circle cx="150" cy="125" r="25" fill="#fff" stroke="#22293f" stroke-width="4"/><path d="M150 100l10 15 18 2-13 13 4 18-19-8-18 8 4-18-13-13 18-2z" fill="#4fc3f7"/>
+          <text x="160" y="186" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">💫 流星球和各種球類一起玩！</text>
+        </svg>`,
+      machines: `
+        <svg class="club-art" viewBox="0 0 320 200">
+          <g class="spin" transform="translate(118,95)"><circle r="42" fill="#4fc3f7" stroke="#22293f" stroke-width="6"/><circle r="15" fill="#fff" stroke="#22293f" stroke-width="5"/></g>
+          <g class="spin" transform="translate(195,112)"><circle r="33" fill="#ffd32a" stroke="#22293f" stroke-width="6"/><circle r="12" fill="#fff" stroke="#22293f" stroke-width="5"/></g>
+          <path d="M72 150h178" stroke="#22293f" stroke-width="7" stroke-linecap="round"/>
+          <text x="160" y="186" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">⚙️ 組裝機械探索運轉原理！</text>
+        </svg>`,
+      board: `
+        <svg class="club-art" viewBox="0 0 320 200">
+          <rect x="65" y="45" width="110" height="82" rx="12" fill="#4fc3f7" stroke="#22293f" stroke-width="5" transform="rotate(-8 120 86)"/>
+          <rect x="145" y="52" width="110" height="82" rx="12" fill="#ff6b8b" stroke="#22293f" stroke-width="5" transform="rotate(8 200 93)"/>
+          <g class="bounce"><rect x="130" y="112" width="58" height="58" rx="10" fill="#fff" stroke="#22293f" stroke-width="5"/><circle cx="145" cy="128" r="5"/><circle cx="173" cy="128" r="5"/><circle cx="159" cy="141" r="5"/><circle cx="145" cy="155" r="5"/><circle cx="173" cy="155" r="5"/></g>
+          <text x="160" y="194" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">🎲 一起動腦玩桌遊！</text>
+        </svg>`,
       pingpong: `
         <svg class="club-art" viewBox="0 0 320 200">
           <g class="wiggle"><circle cx="105" cy="95" r="35" fill="#ff4757" stroke="#22293f" stroke-width="5"/><rect x="95" y="122" width="20" height="42" rx="8" fill="#c98b5d" stroke="#22293f" stroke-width="3"/></g>
@@ -1112,7 +1169,7 @@
           </g>
           <text class="float" x="75" y="90" font-size="34" font-weight="900" fill="#ff4757">♫</text>
           <text class="bounce" x="235" y="85" font-size="30" font-weight="900" fill="#4fc3f7">♪</text>
-          <text x="160" y="185" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">💃 K-POP 偶像動感舞步！</text>
+          <text x="160" y="185" font-size="16" font-weight="900" fill="#22293f" text-anchor="middle">💃 跟著節奏跳出自信舞步！</text>
         </svg>`,
       blocks: `
         <svg class="club-art" viewBox="0 0 320 200">
@@ -1207,7 +1264,7 @@
     // 31 個社團完整資料清單
     const clubs = [
       // 週一
-      { code:'A1', day:'週一', time:'16:10–17:40', name:'拉鈴社', intro:'轉動手上的扯鈴，像施魔法一樣在空中變出酷炫花招！', svgType:'diabolo', color:'#ff6b8b', img:'images/diabolo.jpg' },
+      { code:'A1', day:'週一', time:'16:10–17:40', name:'扯鈴社', intro:'認識扯鈴文化，練習運鈴、調鈴與基礎招式，訓練手眼協調！', svgType:'diabolo', color:'#ff6b8b', img:'images/diabolo.jpg' },
       { code:'A2', day:'週一', time:'16:10–17:40', name:'趣味英語社', intro:'唱歌、玩闖關遊戲，不用死背單字，開心開口說 ABC！', svgType:'english', color:'#4fc3f7', img:'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80' },
       { code:'A4', day:'週一', time:'16:10–17:40', name:'競技疊杯', intro:'極限手速挑戰！快快把專用疊杯疊高高再一秒收杯！', svgType:'cups', color:'#5cdbb5', img:'images/cups.jpg' },
       { code:'A6', day:'週一', time:'16:10–17:40', name:'熱愛樂樂棒球社', intro:'安全泡棉球棒，大力揮棒把球打到外野，享受全壘打快感！', svgType:'baseball', color:'#ffdb4d', img:'images/baseball.jpg' },
@@ -1217,48 +1274,49 @@
       { code:'A10', day:'週一', time:'16:10–17:40', name:'桌球社（週一班）', intro:'揮動球拍接住旋轉小白球，訓練超強專注力與敏捷反應！', svgType:'pingpong', color:'#00d2d3', img:'images/pingpong.jpg' },
 
       // 週二
-      { code:'B4', day:'週二', time:'16:10–17:40', name:'圍棋社', intro:'黑白棋子在十九路棋盤上鬥智，動腦佈局當個小小棋聖！', svgType:'go', color:'#8395a7', img:'images/go.jpg' },
+      { code:'B4', day:'週二', time:'16:10–17:40', name:'圍棋社', intro:'用黑白棋子動腦佈局，學習思考、判斷與解決問題！', svgType:'go', color:'#8395a7', img:'images/go.jpg' },
       { code:'B5', day:'週二', time:'16:10–17:40', name:'直排輪社團', intro:'穿上帥氣輪鞋與全套護具，在球場上像風一樣快意滑行！', svgType:'skate', color:'#ff6b8b', img:'images/skate.jpg' },
       { code:'B6', day:'週二', time:'16:10–17:40', name:'動力科學創客營', intro:'雪橇車、爬行怪獸與動力機關，每週動手做出會動的玩具！', svgType:'sciencecar', color:'#ffd32a', img:'images/sciencecar.jpg' },
-      { code:'B7', day:'週二', time:'16:10–17:40', name:'韓國熱舞社（K-POP）', intro:'跳最流行的 K-POP 音樂舞步，跟著動感節奏跳出帥氣自信！', svgType:'kpop', color:'#ff4757', img:'https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=800&q=80' },
+      { code:'B7', day:'週二', time:'16:10–17:40', name:'韓風熱舞社', intro:'跟著流行韓風熱舞練習，鍛鍊記憶力、觀察力與身體協調！', svgType:'kpop', color:'#ff4757', img:'https://images.unsplash.com/photo-1535525153412-5a42439a210d?auto=format&fit=crop&w=800&q=80' },
 
       // 週三
-      { code:'C1', day:'週三', time:'16:10–17:40', name:'積木冒險遊戲社', intro:'用彩色積木搭建城堡與闖關迷宮，組裝屬於自己的奇幻世界！', svgType:'blocks', color:'#ff9f43', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80' },
-      { code:'C2', day:'週三', time:'16:10–17:40', name:'桌遊推理寶可夢卡牌（Pokémon）', intro:'召喚皮卡丘與噴火龍！動腦打出能量卡與訓練家卡，打贏對決！', svgType:'pokemon', color:'#ffd32a', img:'images/pokemoncards.jpg' },
-      { code:'C3', day:'週三', time:'16:10–17:40', name:'蝶谷巴特拼豆創意手作', intro:'用小鑷子拼出可愛卡通拼豆，熨燙成鑰匙圈和漂亮裝飾盒！', svgType:'craft', color:'#ff6b8b', img:'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80' },
-      { code:'C4', day:'週三', time:'16:10–17:40', name:'小小醫師社', intro:'拿聽診器聽心跳、學習骨骼與急救小知識，當健康守護者！', svgType:'doctor', color:'#4fc3f7', img:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80' },
-      { code:'C5', day:'週三', time:'16:10–17:40', name:'STEAM科學家', intro:'火山爆發、彩色變色水與神奇結晶，做實驗探尋科學奧秘！', svgType:'sciencecar', color:'#2ed573', img:'images/sciencecar.jpg' },
+      { code:'C1', day:'週三', time:'16:10–17:40', name:'積木冒險遊戲社', intro:'在積木創作、桌遊互動與冒險任務中，一起動手操作、思考和合作！', svgType:'blocks', color:'#ff9f43', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80' },
+      { code:'C2', day:'週三', time:'16:10–17:40', name:'桌遊社與寶可夢卡牌', intro:'玩綜合桌遊訓練邏輯，也用寶可夢卡牌練習對戰能力！', svgType:'pokemon', color:'#ffd32a', img:'images/pokemoncards.jpg' },
+      { code:'C3', day:'週三', time:'16:10–17:40', name:'蝶谷巴特拼豆創意手作', intro:'運用蝶谷巴特拼貼與拼豆技巧，完成不同主題的創意作品！', svgType:'craft', color:'#ff6b8b', img:'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80' },
+      { code:'C4', day:'週三', time:'16:10–17:40', name:'小小醫師社', intro:'透過互動方式認識醫學知識與實作體驗，探索醫師的世界！', svgType:'doctor', color:'#4fc3f7', img:'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80' },
+      { code:'C5', day:'週三', time:'16:10–17:40', name:'STEAM科學家', intro:'動手完成科學實驗作品，把複雜原理變成看得見的科學發現！', svgType:'science', color:'#2ed573', img:'https://i.ytimg.com/vi/4MHn9Q5NtdY/hqdefault.jpg' },
       { code:'C6', day:'週三', time:'16:10–17:40', name:'流行舞蹈表演社（進階）', intro:'帥氣踩點、排舞與隊形變換，準備站上舞臺成為全場焦點！', svgType:'kpop', color:'#9d7bf5', img:'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80' },
-      { code:'C7', day:'週三', time:'16:10–17:40', name:'小小魔術營之我是好主播社', intro:'手拿麥克風大方表達，一邊主播新聞一邊變魔術，自信滿分！', svgType:'magic', color:'#ff9f43', img:'images/magic.jpg' },
+      { code:'C7', day:'週三', time:'16:10–17:40', name:'小小廣播營之我是好主播社', intro:'在麥克風前練習聲音表達、說學逗唱，完成自己的聲音作品！', svgType:'broadcaster', color:'#ff9f43', img:'https://i.ytimg.com/vi/eCnsqz1m0yQ/hqdefault.jpg' },
 
       // 週四
-      { code:'D1', day:'週四', time:'16:10–17:40', name:'創意奶油膠手作社', intro:'擠出像鮮奶油一樣的彩色膠，貼上小熊與草莓做可愛文具！', svgType:'cream', color:'#ff6b8b', img:'images/cream.jpg' },
-      { code:'D2', day:'週四', time:'16:10–17:40', name:'科技無人機', intro:'用平板寫積木程式，遙控無人機在空中起飛、翻滾與穿圈！', svgType:'drone', color:'#4fc3f7', img:'images/drone.jpg' },
-      { code:'D3', day:'週四', time:'16:10–17:40', name:'流星球與球類運動社', intro:'甩動發光流星球，還能玩足球、籃球與躲避球，全身動起來！', svgType:'baseball', color:'#ffdb4d', img:'images/baseball.jpg' },
+      { code:'D1', day:'週四', time:'16:10–17:40', name:'創意奶油膠手作社', intro:'設計流動的奶油膠造型，訓練小肌肉並完成獨一無二的作品！', svgType:'cream', color:'#ff6b8b', img:'images/cream.jpg' },
+      { code:'D2', day:'週四', time:'16:10–17:40', name:'科技無人機', intro:'用平板程式控制 Tello EDU 無人機，學習編程與科技操作！', svgType:'drone', color:'#4fc3f7', img:'images/drone.jpg' },
+      { code:'D3', day:'週四', time:'16:10–17:40', name:'流星球與球類運動社', intro:'甩動流星球變出花招，也接觸足球、籃球與躲避球等球類運動！', svgType:'balls', color:'#ffdb4d', img:'https://i.ytimg.com/vi/hKZvvHWsgAQ/hqdefault.jpg' },
       { code:'D4', day:'週四', time:'16:10–17:40', name:'頂尖飛盤社', intro:'掌握反手與正手投擲技巧，把飛盤又平又快丟進目標靶心！', svgType:'frisbee', color:'#5cdbb5', img:'images/frisbee.jpg' },
 
       // 週五
-      { code:'E1', day:'週五', time:'16:10–17:40', name:'動力機械社', intro:'探索槓桿、輪軸與滑輪，組裝出會自動行走的機械獸！', svgType:'sciencecar', color:'#4fc3f7', img:'images/sciencecar.jpg' },
+      { code:'E1', day:'週五', time:'16:10–17:40', name:'動力機械社', intro:'組裝動力機械作品，探索空間概念、創造力與機械原理！', svgType:'machines', color:'#4fc3f7', img:'https://i.ytimg.com/vi/LSfNYpCprw4/hqdefault.jpg' },
       { code:'E2', day:'週五', time:'16:10–17:40', name:'桌球社（週五班）', intro:'練發球、拉球與扣殺，週五放學快樂打球流汗超放鬆！', svgType:'pingpong', color:'#00d2d3', img:'images/pingpong.jpg' },
-      { code:'E3', day:'週五', time:'16:10–17:40', name:'瘋狂積木', intro:'900g 繽紛積木自由發揮，打造超巨大機器人與太空基地！', svgType:'blocks', color:'#ff9f43', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80' },
-      { code:'E5', day:'週五', time:'16:10–17:40', name:'頂尖桌遊社', intro:'大富翁、卡卡頌與派對桌遊，跟同學一起動腦搶分拿冠軍！', svgType:'pokemon', color:'#9d7bf5', img:'images/pokemoncards.jpg' },
-      { code:'E6', day:'週五', time:'16:10–17:40', name:'韓國熱舞社（K-POP週五班）', intro:'跟著流行韓國音樂舞動身體，鍛鍊肌力與帥氣舞步！', svgType:'kpop', color:'#ff4757', img:'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80' },
+      { code:'E3', day:'週五', time:'16:10–17:40', name:'瘋狂積木', intro:'用 900g 積木看圖解，拼出 2D 平面與 3D 立體作品！', svgType:'blocks', color:'#ff9f43', img:'https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80' },
+      { code:'E5', day:'週五', time:'16:10–17:40', name:'頂尖桌遊社', intro:'和同學一起學習桌遊，在遊戲中練習合作、耐心與思考！', svgType:'board', color:'#9d7bf5', img:'https://i.ytimg.com/vi/0_BsfW1OCsk/hqdefault.jpg' },
+      { code:'E6', day:'週五', time:'16:10–17:40', name:'韓風熱舞社', intro:'跟著流行韓風熱舞練習，鍛鍊記憶力、觀察力與身體協調！', svgType:'kpop', color:'#ff4757', img:'https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=800&q=80' },
 
       // 週三下午
-      { code:'H1', day:'週三下午', time:'12:40–16:00', name:'可愛黏土卡通手作社', intro:'彩色超輕黏土捏出寶可夢、角落小夥伴，做成立體公仔帶回家！', svgType:'clay', color:'#ff6b8b', img:'images/clay.jpg' },
+      { code:'H1', day:'週三下午', time:'12:40–16:00', name:'可愛黏土卡通手作社', intro:'用可愛黏土完成卡通造型作品，訓練小肌肉與創造力！', svgType:'clay', color:'#ff6b8b', img:'images/clay.jpg' },
       { code:'H2', day:'週三下午', time:'13:30–15:00', name:'流行舞蹈表演社（基礎）', intro:'從基礎律動、拉筋和手部動作開始，一步一步愛上跳舞！', svgType:'kpop', color:'#9d7bf5', img:'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80' },
-      { code:'H3', day:'週三下午', time:'13:30–15:00', name:'初階排球', intro:'雙手托球、低手墊球與發球，學會和小夥伴團隊合作接住每一球！', svgType:'volleyball', color:'#ffdb4d', img:'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80' }
+      { code:'H3', day:'週三下午', time:'13:30–15:00', name:'初階排球', intro:'用遊戲方式學習排球基本動作與基本觀念！', svgType:'volleyball', color:'#ffdb4d', img:'https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=800&q=80' }
     ];
 
     // 已逐一確認可取得公開資訊的 YouTube 影片；同類型班別可共用適合的入門內容。
     const VIDEO_LIBRARY = {
-      diabolo: { id:'9ls8bP0Ovx4', title:'扯鈴初學：起鈴與基本動作' },
+      diabolo: { id:'3TDx8yoEfnA', title:'朝山國小｜扯鈴基礎教學：運鈴、起鈴與調鈴' },
       english: { id:'l4WNrvVjiTw', title:'If You’re Happy｜趣味英文唱跳' },
       cups: { id:'x2x7JUiTR1c', title:'競技疊杯初學教學' },
       baseball: { id:'SAXvDgXB1kI', title:'國小體育課：樂樂棒球怎麼玩？' },
       propellerCar: { id:'F8-84J8vtUg', title:'橡皮筋螺旋槳動力車 STEM 專題' },
       art: { id:'DihEco852Jw', title:'小朋友簡單畫畫：11 種主題' },
       magic: { id:'fJ6D3LwjZ1s', title:'小朋友也能學會的 7 個魔術' },
+      broadcaster: { id:'eCnsqz1m0yQ', title:'高雄小小主播營｜體驗一日主播' },
       pingpong: { id:'-An63ijhWqI', title:'桌球初學完整入門' },
       go: { id:'cFVM_hwh56s', title:'圍棋新手規則教學' },
       skate: { id:'Ek5gHjPrRyo', title:'直排輪入門：三步驟開始滑行' },
@@ -1282,7 +1340,7 @@
     const VIDEO_KEY_BY_CLUB = {
       A1:'diabolo', A2:'english', A4:'cups', A6:'baseball', A7:'propellerCar', A8:'art', A9:'magic', A10:'pingpong',
       B4:'go', B5:'skate', B6:'propellerCar', B7:'danceBasic',
-      C1:'blocks', C2:'pokemon', C3:'craft', C4:'doctor', C5:'science', C6:'danceAdvanced', C7:'magic',
+      C1:'blocks', C2:'pokemon', C3:'craft', C4:'doctor', C5:'science', C6:'danceAdvanced', C7:'broadcaster',
       D1:'cream', D2:'drone', D3:'balls', D4:'frisbee',
       E1:'machines', E2:'pingpong', E3:'blocks', E5:'board', E6:'danceBasic',
       H1:'clay', H2:'danceBasic', H3:'volleyball'
@@ -1305,6 +1363,16 @@
       clay: 'images/clay.jpg'
     };
 
+    // 依原始 PDF「對象（年級）」欄逐列核對；以下 31 個範圍全部包含一年級。
+    const GRADE_BY_CLUB = {
+      A1:'1–5', A2:'1–6', A4:'1–6', A6:'1–4', A7:'1–6', A8:'1–2', A9:'1–6', A10:'1–6',
+      B4:'1–6', B5:'1–6', B6:'1–6', B7:'1–6',
+      C1:'1–6', C2:'1–6', C3:'1–6', C4:'1–6', C5:'1–6', C6:'1–6', C7:'1–6',
+      D1:'1–6', D2:'1–6', D3:'1–6', D4:'1–6',
+      E1:'1–6', E2:'1–6', E3:'1–6', E5:'1–6', E6:'1–6',
+      H1:'1–6', H2:'1–6', H3:'1–3'
+    };
+
     function exactTopicImages(videoKey, videoId) {
       const videoFrames = ['hqdefault', 'hq1', 'hq2', 'hq3'].map(frame =>
         `https://i.ytimg.com/vi/${videoId}/${frame}.jpg`
@@ -1316,6 +1384,7 @@
     clubs.forEach(club => {
       const videoKey = VIDEO_KEY_BY_CLUB[club.code];
       club.video = VIDEO_LIBRARY[videoKey];
+      club.grades = GRADE_BY_CLUB[club.code];
       club.images = exactTopicImages(videoKey, club.video.id);
     });
 
@@ -1358,7 +1427,10 @@
         <!-- 說明文字區 -->
         <div class="card-body">
           <div class="card-meta">
-            <span class="day-pill">⏰ ${club.time}</span>
+            <div class="card-facts">
+              <span class="day-pill">⏰ ${club.time}</span>
+              <span class="grade-pill">✅ ${club.grades} 年級</span>
+            </div>
             <button class="speech-btn" type="button" onclick="speakClub('${club.name}', '${club.intro}')">🔊 唸給我聽</button>
           </div>
           <h3 class="club-title">${club.name}</h3>
@@ -2902,7 +2974,7 @@
       C4: '把聽診器拖到小熊胸口，再把 OK 繃拖到受傷的地方！',
       C5: '把藥水瓶拖到燒瓶上面倒進去！',
       C6: '音符掉到圓圈上的時候，點那一排！',
-      C7: '用手指沿著星星畫一圈，鴿子就會飛出來！',
+      C7: '新聞卡片到圓圈時點一下，完成小主播播報！',
       D1: '選一個顏色，用手指擠出奶油膠花紋！',
       D2: '用手指帶著無人機，對準圈圈中間飛過去！',
       D3: '按住流星球往後拉，放開就會飛出去！',
@@ -3201,11 +3273,11 @@
         winText: '完美踩點！全場起立鼓掌！'
       }),
 
-      // C7 好主播社：畫圈變出鴿子開始播報
-      C7: club => playWand(club, {
-        need: 2, prop: '🎙️', magic: '🕊️', bg1: '#2b3a55', bg2: '#5b7fa8',
-        hint: '沿著星星畫一圈！', again: '再變一隻！',
-        winText: '鴿子飛出來！播報超精彩！'
+      // C7 小小廣播營：跟著提示完成新聞播報
+      C7: club => playRhythm(club, {
+        need: 5, fall: 2.7, gap: 72, hint: '新聞卡到圓圈就點！',
+        lanes: ['🎙️', '📢', '📺'], note: '📰', dancer: '🧒',
+        winText: '播報完成！你是自信小主播！'
       }),
 
       // D1 奶油膠手作：用手指擠出奶油花紋
